@@ -1,0 +1,37 @@
+﻿@model ICollection<Etablissement>
+
+<h1>Liste des Etablissements</h1>
+<a asp-action="Create" class="btn btn-secondary">Créer</a>
+<br />
+<br />
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Code d'Etablissement
+            </th>
+            <th>
+                Nom d'Etablissement
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Etablissement eta in Model)
+        {
+            <tr>
+                <td>
+                    @eta.EtablissementId
+                </td>
+                <td>
+                    @eta.EtablissementName
+                </td>
+                <td>
+                    <a asp-controller="Etablissement" asp-action="Details" asp-route-id="@eta.EtablissementId" class="btn btn-primary">Details</a>
+                    <a asp-controller="Etablissement" asp-action="Edit" asp-route-id="@eta.EtablissementId" class="btn btn-warning">Modifier</a>
+                    <a asp-controller="Etablissement" asp-action="Delete" asp-route-id="@eta.EtablissementId" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

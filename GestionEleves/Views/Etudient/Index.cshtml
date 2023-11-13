@@ -1,0 +1,53 @@
+﻿@model ICollection<Etudient>
+
+    <h1>Liste des Etudients</h1>
+    <a asp-action="Create" class="btn btn-primary">New</a>
+
+    <table class="table table-striped table-bordered" style="width:100%;">
+        <thead>
+            <tr>
+                <th>
+                    Student ID
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    Birth Date
+                </th>
+                <th>
+                    Etablissement
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach(var etu in Model)
+        {
+           <tr>
+                <td>
+                    @etu.EtudientID
+                </td>
+                <td>
+                    @etu.EtudientFirstName
+                </td>
+                <td>
+                    @etu.EtudientLastName
+                </td>
+                <td>
+                    @etu.EtudientBirthDate.ToShortDateString()
+                </td>
+                <td>
+                    @etu.Etablissement?.EtablissementName
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@etu.EtudientID" class="btn btn-primary">Details</a>
+                    <a asp-action="Edit" asp-route-id="@etu.EtudientID" class="btn btn-warning">Modifier</a>
+                    <a asp-action="Delete" asp-route-id="@etu.EtudientID" class="btn btn-danger">Supprimer</a>
+                </td>
+           </tr>
+        }
+        </tbody>
+    </table>
